@@ -19,10 +19,11 @@ use Rusty_CryptoAuthLib::ATECC608A;
 
 #[entry]
 fn main() -> ! {
+	defmt::info!("Hello  ");
     let p = Peripherals::take().unwrap();
     let pins = Pins::new(p0::Parts::new(p.P0), p1::Parts::new(p.P1));
-    let scl = pins.p27.into_floating_input().degrade();
-    let sda = pins.p26.into_floating_input().degrade();
+    let scl = pins.ain4.into_floating_input().degrade();
+    let sda = pins.ain5.into_floating_input().degrade();
 
     let i2c_pins = twim::Pins { scl, sda };
 
@@ -39,7 +40,7 @@ fn main() -> ! {
     };
 
     assert_eq!(&info[..], revision_id);
-    defmt::info!("REVISION INFO: {:[u8; 4]} ", info);
+    defmt::info!("info = {:?} ", info);
 
     exit()
 }

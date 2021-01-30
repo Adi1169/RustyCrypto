@@ -3,7 +3,7 @@
 
 #![deny(missing_docs)]
 #![deny(arithmetic_overflow)]
-#![deny(warnings)]
+//#![deny(warnings)]
 #![deny(unsafe_code)]
 #![deny(unstable_features)]
 #![deny(unused_import_braces)]
@@ -41,7 +41,7 @@ use postcard::to_vec;
 // For logging i.e. printf style debugging
 use core::sync::atomic::{AtomicUsize, Ordering};
 
-#[defmt::timestamp]
+/*#[defmt::timestamp]
 fn timestamp() -> u64 {
     static COUNT: AtomicUsize = AtomicUsize::new(0);
     // NOTE(no-CAS) `timestamps` run with interrupts disabled
@@ -49,7 +49,7 @@ fn timestamp() -> u64 {
     COUNT.store(n + 1, Ordering::Relaxed);
     n as u64
 }
-
+*/	
 // use cortex_m_semihosting::hprintln;
 
 /// Device's i2c address
